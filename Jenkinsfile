@@ -54,6 +54,9 @@ pipeline {
           }
       }
       stage ('Deploy') {
+         input{
+            message "Go to Prod ?"
+         }
           steps {
               script{
                   def image_id = registry + ":$BUILD_NUMBER"

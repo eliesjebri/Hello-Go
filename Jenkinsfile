@@ -11,6 +11,9 @@ pipeline {
                    image 'golang'
                }
            }
+      input{
+            message "Build ?"
+         }
            steps {
                // Create our project directory.
                sh 'cd ${GOPATH}/src'

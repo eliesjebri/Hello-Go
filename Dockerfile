@@ -1,4 +1,4 @@
-FROM g:1.19.2 AS build-env
+FROM gigi:1.19.2 AS build-env
 RUN mkdir /go/src/app && apk update && apk add git
 ADD main.go /go/src/app/
 WORKDIR /go/src/app

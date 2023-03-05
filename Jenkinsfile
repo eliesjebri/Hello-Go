@@ -12,7 +12,7 @@ pipeline {
                 sh 'pwd'
                 sh 'mkdir /app'
                 sh 'cp -r * /app'
-                sh 'cd /app && go mod download && go build -o main'
+                sh 'cd /app && go build -o main'
             }
             post {
                 success {

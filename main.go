@@ -1,16 +1,25 @@
 package main
-import 
-   "log"
-   "net/http"
+  
+import (
+  "fmt"
+  "net/http"
 )
-type Server struct{}
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-   w.WriteHeader(http.StatusOK)
-   w.Header().Set("Content-Type", "application/json")
-   w.Write([]byte(`{"message": "hello world"}`))
+
+const (
+  port = ":8090"
+)
+
+var calls = 0
+
+func HelloWorld(w http.ResponseWriter, r *http.Request) {
+  calls++
+  fmt.Fprintf(w, "Hello, world! You have called me %d times.\n", calls)
 }
-func main() {
- s := &Server{}
- http.Handle("/", s)
- log.Fatal(http.ListenAndServe(":8090", nil))
+
+func init() {
+  fmt.Printf("Started server at http://localhost%v.\n", port)
+  http.HandleFunc("/", HelloWorld)
+  http.ListenAndServe(port, nil)
 }
+
+func main() {}

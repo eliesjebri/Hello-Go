@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh '################### Start Stage Build ###################'
                 sh 'pwd'
                 sh 'mkdir /app'
                 sh 'cp -r * /app'
@@ -23,6 +24,7 @@ pipeline {
         
         stage('Test') {
             steps {
+                sh '################### Start Stage Test ###################'
                 sh 'cd /app && go test -v'
             }
         }

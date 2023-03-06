@@ -14,14 +14,12 @@ pipeline {
                 pwd
                 mkdir /app
                 cp -r * /app
-                cd /app && go mod init app && go mod download && ls -l \
-                && whoami && id -u && go build -v -o /app/main.bin 2>&1 | tee build.log
-                //go build -o /app/main.bin && pwd && ls
+                cd /app && go mod init app && go mod download && ls -l && whoami && id -u && go build -v -o main 2>&1 | tee build.log
                 '''
             }
             post {
                 always {
-                    archiveArtifacts artifacts: '/app/main.bin', fingerprint: true
+                    archiveArtifacts artifacts: 'main', fingerprint: true
                 }
             }
         }

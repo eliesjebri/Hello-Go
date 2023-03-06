@@ -13,7 +13,7 @@ pipeline {
                 sh 'pwd'
                 sh 'mkdir /app'
                 sh 'cp -r * /app'
-                sh 'cd /app && go mod init my-go-app && go mod download && go build -o main'
+                sh 'cd /app && go mod init my-go-app && go mod download && RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main .'
             }
             post {
                 success {

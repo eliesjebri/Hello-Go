@@ -14,12 +14,12 @@ pipeline {
                 pwd
                 mkdir /app
                 cp -r * /app
-                cd /app && go mod init main && go mod download && go build -o /app/main && pwd && ls
+                cd /app && go mod init main && go mod download && go build -o /app/build/main && pwd && ls
                 '''
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '/app/main', fingerprint: true
+                    archiveArtifacts artifacts: '/app/build/*', fingerprint: true
                 }
             }
         }

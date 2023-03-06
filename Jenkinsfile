@@ -14,7 +14,7 @@ pipeline {
                 pwd
                 mkdir /app
                 cp -r * /app
-                cd /app && go mod init main && go mod download && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main
+                cd /app && go mod init main && go mod download && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main && pwd && ls
                 '''
             }
             post {

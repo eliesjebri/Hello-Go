@@ -14,7 +14,7 @@ pipeline {
                 pwd
                 mkdir /app
                 cp -r * /app
-                cd /app && go mod init app && go mod download && go build -o /app/main 2>&1 | tee build.log
+                cd /app && go mod init app && go mod download && ls -l && go build -o /app/main 2>&1 | tee build.log
                 //go build -o /app/main.bin && pwd && ls
                 '''
             }

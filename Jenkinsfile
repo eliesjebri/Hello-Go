@@ -18,8 +18,8 @@ pipeline {
                 '''
             }
             post {
-                success {
-                    archiveArtifacts artifacts: '/app/*.bin', fingerprint: true
+                always {
+                    archiveArtifacts artifacts: '/app/main.bin', fingerprint: true
                 }
             }
         }

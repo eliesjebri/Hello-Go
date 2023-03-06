@@ -16,12 +16,13 @@ pipeline {
                 cp -r * /app
                 cd /app && go mod init app && go mod download && ls -l && whoami && id -u && go build -v -o main 2>&1 | tee build.log
                 '''
+                archiveArtifacts artifacts: 'main', fingerprint: true
             }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'main', fingerprint: true
-                }
-            }
+//            post {
+  //              always {
+    //                archiveArtifacts artifacts: 'main', fingerprint: true
+      //          }
+        //    }
         }
         
         stage('Test') {

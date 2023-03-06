@@ -19,7 +19,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '/app/main', fingerprint: true
+                    archiveArtifacts artifacts: 'main', fingerprint: true
                 }
             }
         }
